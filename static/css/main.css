@@ -1,0 +1,179 @@
+		html, body{
+			padding: 0;
+			margin: 0;
+			font-family: 'Balsamiq Sans', cursive;
+
+		}
+		.add-section{
+			height: 25vh;
+			width: 100vw;
+		background: rgba(255,255,255,1);
+		background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 100%);
+		background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(245,245,245,1)), color-stop(100%, rgba(237,237,237,1)));
+		background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 100%);
+		background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 100%);
+		background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 100%);
+		background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 47%, rgba(237,237,237,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+		}
+	
+		.add-city{
+			display: flex;
+			align-items: center;
+			height: 85%;
+		}
+			.add-btn{
+			border: none;
+			height: 38px;
+		    width: 140px;
+		    padding: 10px;
+		    font-size: 1.2em;
+		    /* text-align: center; */
+		    background-image: linear-gradient(to left, rgb(254, 202, 87),rgb(238, 82, 83), rgb(254, 202, 87));
+		    background-size: 200%;
+		    color: white;		    	
+		}
+		.add-btn:hover{
+				color: white;
+			    background-position: right;
+		}
+		.text-input{ 
+		 position: relative;
+		 margin-top: 50px;
+		}
+		 
+		 input[type="text"]{
+		 display: inline-block;
+		 width: 30vw;
+		 height: 40px;
+		 box-sizing: border-box;
+		 outline: none;
+		 border: 1px solid lightgray;
+		 border-radius: 3px;
+		 padding: 10px 10px 10px 100px;
+		 transition: all 0.1s ease-out;
+		 }
+
+		 input[type="text"] + label{
+		 position: absolute;
+		 top: 0;
+		 left: 0;
+		 bottom: 0;
+		 height: 40px;
+		 line-height: 40px;
+		 color: white;
+		 border-radius: 3px 0 0 3px;
+		 padding: 0 20px;
+		 background: #fa8072;
+		 transform: translateZ(0) translateX(0);
+		 transition: all 0.3s ease-in;
+		 transition-delay: 0.2s;
+		 }
+		 
+		 input[type="text"]:focus + label{
+		 transform: translateY(-120%) translateX(0%);
+		 border-radius: 3px;
+		 transition: all 0.1s ease-out;
+		 }
+		 
+		 input[type="text"]:focus{
+		 padding: 10px;
+		 transition: all 0.3s ease-out;
+		 transition-delay: 0.2s;
+		 }
+
+		 .content-section{
+			background: #fff;
+			height: 75vh;
+			width: 100vw;
+			padding: 30px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+		}
+
+		.city-card{
+			background:rgba(236, 240, 241,0.4);
+			width:300px;
+			height: 400px;
+			padding: 16px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+		    transition: all 0.25s ease-in-out;
+		    margin-bottom: 50px;
+		}
+		.city-card:hover{
+			  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+		}
+
+		.top-content{
+			height: 60%;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			border-bottom: 2px solid rgba(211, 84, 0,1.0)
+		}
+
+		.bottom-content{
+			width: 100%;
+			height: 40%;
+			justify-content: center;
+			text-align: center;			
+		}
+		.city-name{
+			height: 30%;
+			width: 100%;
+			justify-content: center;
+			color: rgba(211, 84, 0,1.0);
+		}
+		.city-weather{
+			height: 70%;
+			width: 100%;
+			display: block;
+		}
+		.city-image{
+			width: 100%;
+			height: 100%;
+			background-size: contain;
+		}
+		.weather-info div{
+
+		}
+		.main-weather{
+			align-items: center;
+		    display: flex;
+		    justify-content: center;
+		}
+		.desc-weather{
+				position: relative;
+			    align-items: center;
+			    display: flex;
+			    margin-left: 1em;
+			    padding-left: 1em;
+		}
+		.desc-weather::before{
+			content: "";
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			height: 60%;
+			width: 1px;
+			background: rgba(211, 84, 0,0.8);
+		}
+		.main-weather-row{
+			display: flex;
+    		justify-content: center;
+		}
+		.app-title{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto; 
+			color: rgb(254, 202, 87);
+		}
+		.app-title strong{
+			color: #d63031;
+			font-size: 1.6em;
+		}
