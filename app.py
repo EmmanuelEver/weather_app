@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, make_response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import requests
 from datetime import datetime
@@ -66,16 +66,28 @@ def home():
 
 @app.route('/add', methods = ['POST'])
 def add():
-	name = request.form.get('name').capitalize()
-	print(name)
+	res = request.get_json()
+	print(res["name"].capitalize())
+	name = res["name"].capitalize()
 	city = requests.get(url.format(name.capitalize())).json()
 	if city["cod"] == 200:
 		new_city = City.check_by_name(name.capitalize())
 		if not new_city:
 			new_city = City(name.capitalize())
 			new_city.save_to_db()
-			flash("City successfully added", category = "success")
-			return redirect(url_for("home"))
+			r = requests.get(url.format(name)).json()
+			image = requests.get(unsplash_url.format(name)).json()
+			data = {
+				"name" : r["name"],
+				"main" : r["weather"][0]["main"],
+				"description" : r["weather"][0]["description"],
+				"icon" : r["weather"][0]["icon"],
+				"temp" : r["main"]["temp"],
+				"date" : datetime.utcnow(),
+				"image" : image["results"][0]["urls"]["small"]
+				}
+			res = make_response(jsonify(data),200)
+			return res
 		else:
 			flash("City already existed", category = "danger")
 			return redirect(url_for("home"))

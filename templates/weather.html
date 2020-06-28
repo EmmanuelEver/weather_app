@@ -26,7 +26,7 @@
 						</div>									
 				</div>
 				<div class="add-city">
-						<button type="submit" class="btn add-btn">Add City</button>
+						<button type="button" class="btn add-btn" onclick="add_city()">Add City</button>
 				</div>
 				<div class="app-title">
 					<h1>just a simple <strong>Weather App</strong></h1>
@@ -82,5 +82,60 @@
 
 	<script type="text/javascript" src="../static/js/jquery.js"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+
+		function add_city(){
+			let input_city = $("#input1").val()
+			console.log(input_city)
+			let data = {"name":input_city}
+			let container = $(".content-section")
+
+			fetch(`${window.origin}/add`,{
+				method : "POST",
+				credentials : "include",
+				body : JSON.stringify(data),
+				cache : "no-cache",
+				headers : new Headers({
+					"content-type" : "application/json"
+				})
+			}).then(function(res){
+				if (res.status !== 200){
+					alert(`error adding new city ${res.status}`)
+					return
+				}
+				res.json().then(function(data){
+					let card = `<div class="city-card">
+								<div class="row top-content">
+									<div class="city-image" style="background-image:url(${data.image})">
+									</div>
+								</div>
+								<div class="row bottom-content">
+										<div class="row city-name">
+											<h3>${data.name}</h3>
+										</div>
+										<div class="row city-weather">
+											<div class="temperature">
+												<h6>${data.temp}&#8451;</h6>
+											</div>
+											<div class="row main-weather-row">
+												<div class="main-weather">
+													<img src="http://openweathermap.org/img/w/${data.icon}.png">
+													<h5>${data.main}</h5>
+												</div>
+												<div class="desc-weather">
+													${data.description}
+												</div>
+											</div>
+										</div>
+								</div>
+							</div>`
+					container.append(card)
+					$("#input1").val("")
+
+				})
+			})
+		}
+
+	</script>
 </body>
 </html>
